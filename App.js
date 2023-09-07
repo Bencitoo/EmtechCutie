@@ -12,15 +12,17 @@ export default function App() {
   function addGoalHandler() {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
-      enteredGoalText
+      enteredGoalText,
     ]);
+    setEnteredGoalText("");
   };
   return (
     <View style={styles.appContainer}>
 
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder= 'Your Course Goal' onChangeText={goalInputHandler}/>
-        <Button title = 'Add Goal' onPress={addGoalHandler}/>
+        <TextInput style={styles.textInput} placeholder= 'Your Course Goal' onChangeText={goalInputHandler}
+        value={enteredGoalText}/>
+        <Button title = 'Add Goal' onPress={addGoalHandler} disabled={enteredGoalText === ""}/>
       </View>
 
       <View style={styles.goalContainer}> 
